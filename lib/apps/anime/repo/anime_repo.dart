@@ -1,4 +1,3 @@
-import 'package:flutter_usecase_template/api/base_response_model/error_response_model.dart';
 import 'package:flutter_usecase_template/api/base_response_model/pagination_response_model.dart';
 import 'package:flutter_usecase_template/apps/anime/models/anime.dart';
 import 'package:flutter_usecase_template/base/resource.dart';
