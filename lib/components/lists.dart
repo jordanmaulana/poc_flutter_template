@@ -76,7 +76,6 @@ class VPaginatedList extends StatelessWidget {
   final int length;
   final Widget? emptyPlaceHolder;
   final Future<void> Function() onRefresh;
-  final Widget Function(BuildContext c, int i) itemBuilder;
   final double? height;
   final EdgeInsets? padding;
   final Function onNext;
@@ -86,6 +85,7 @@ class VPaginatedList extends StatelessWidget {
   final Widget? loadingPlaceholder;
   final ScrollController? scrollController;
   final ScrollPhysics? physics;
+  final Widget Function(BuildContext c, int i) itemBuilder;
 
   const VPaginatedList({
     super.key,

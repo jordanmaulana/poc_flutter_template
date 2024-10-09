@@ -1,3 +1,4 @@
+import 'package:flutter_usecase_template/apps/anime/views/list/anime_list_view.dart';
 import 'package:flutter_usecase_template/apps/profile/views/profile_page.dart';
 
 import '../../../base/export_view.dart';
@@ -17,7 +18,7 @@ class MainNavPage extends StatelessWidget {
             builder: (context) {
               switch (controller.index.value) {
                 case 0:
-                  return Container();
+                  return AnimeListView();
                 case 1:
                   return Container();
                 case 2:

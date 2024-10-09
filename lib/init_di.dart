@@ -1,3 +1,5 @@
+import 'package:flutter_usecase_template/apps/anime/controllers/anime_list_controller.dart';
+import 'package:flutter_usecase_template/apps/anime/repo/anime_repo.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -44,4 +46,11 @@ void initDi() {
 
   Get.lazyPut(() => GetProfileUsecase(Get.find()));
   Get.put(ProfileController());
+
+  Get.put(AnimeRepo(dioClient));
+
+  Get.lazyPut(
+    () => AnimeListController(),
+    fenix: true,
+  );
 }
