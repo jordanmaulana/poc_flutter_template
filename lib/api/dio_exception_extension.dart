@@ -1,14 +1,29 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_usecase_template/api/base_response_model/error_response_model.dart';
 import 'package:get/get.dart';
 
 /// This is the error parser. It is used as standard to parse error from API responses.
 extension ResponseExtension on DioException {
+  ErrorResponse get errorResponse {
+    Map<String, dynamic>? res = response?.data as Map<String, dynamic>;
+    ErrorResponse result = ErrorResponse.fromJson(res);
+    return result;
+  }
+
   String get errorMessage {
     if (response != null) {
       String? error;
       try {
-        /// TODO: Modify the error parser according to your own standard backend response.
-        error = response!.data['message'];
+        Map<String, dynamic>? res = response?.data as Map<String, dynamic>;
+        ErrorResponse result = ErrorResponse.fromJson(res);
+        error = '';
+        result.messages?.forEach(
+          (key, value) {
+            for (var element in value) {
+              error = '$error $element\n';
+            }
+          },
+        );
       } catch (e) {
         Get.log('Error $e');
       }

@@ -32,6 +32,7 @@ class DioClient extends DioForNative {
             options.headers['Authorization'] = 'Bearer $token';
           }
 
+          options.headers['Accept'] = 'application/json';
           Get.log('Request ${options.uri.toString()}');
           return handler.next(options);
         },

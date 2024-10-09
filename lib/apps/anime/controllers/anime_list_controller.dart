@@ -18,7 +18,10 @@ class AnimeListController extends BaseListController {
         hasNext = data.pagination.hasNextPage;
         update();
       },
-      onFailure: (error) {},
+      onFailure: (error) {
+        this.error = error;
+        update();
+      },
     );
     setLoading(false);
   }

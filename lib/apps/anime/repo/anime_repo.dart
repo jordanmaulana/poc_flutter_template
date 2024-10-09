@@ -1,6 +1,8 @@
-import 'package:flutter_usecase_template/api/pagination_response_model.dart';
+import 'package:flutter_usecase_template/api/base_response_model/error_response_model.dart';
+import 'package:flutter_usecase_template/api/base_response_model/pagination_response_model.dart';
 import 'package:flutter_usecase_template/apps/anime/models/anime.dart';
 import 'package:flutter_usecase_template/base/resource.dart';
+import 'package:get/get.dart';
 
 import '../../../api/dio_client.dart';
 
@@ -10,7 +12,7 @@ class AnimeRepo {
 
   Future<Resource<PaginatedResponse<Anime>, String>> getAnimes({
     int page = 1,
-    int? limit = 20,
+    int? limit = 100,
   }) async {
     try {
       final response = await _dioClient.get(
@@ -20,6 +22,8 @@ class AnimeRepo {
           "limit": limit,
         },
       );
+      Get.log('response ${response.statusCode}');
+
       PaginatedResponse<Anime> apiResponse = PaginatedResponse.fromJson(
           response.data, (item) => Anime.fromJson(item));
       return apiResponse.toResourceSuccess();
